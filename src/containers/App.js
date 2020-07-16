@@ -2,23 +2,24 @@ import React, { Component } from 'react';
 import './App.css';
 import Demo from '../components/Demo/Demo';
 class App extends Component {
+  // Calling the constructor of
+  // Parent Class React.Component
   constructor(props) {
+    // Initialzation process
     super(props);
-    this.state = {};
+    this.state = { count: 0 };
   }
-  //Mounting
-  componentWillMount() {
-    console.log('[App.js] componentWillMount');
-  }
-  componentDidMount() {
-    console.log('[App.js] componentDidMount');
-  }
+  onClick = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
   render() {
-    console.log('[App.js] rendering...');
     return (
       <div className="App">
-        <p>Hello from App.js</p>
-        <Demo></Demo>
+        <h1>Hello from App.js</h1>
+        <br></br>
+        <Demo counting={this.onClick} counter={this.state.count}>
+          Hello from Demo.js
+        </Demo>
       </div>
     );
   }

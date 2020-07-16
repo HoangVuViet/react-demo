@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 export default class Demo extends Component {
+  //Gọi constructor của parent class Component
   constructor(props) {
+    // Qúa trình khởi tạo
+    // Bao gồm set up state và props
     super(props);
     this.state = {};
   }
+  //Mounting
   componentWillMount() {
     console.log('[Demo.js] componentWillMount');
   }
@@ -13,8 +17,10 @@ export default class Demo extends Component {
   render() {
     console.log('[Demo.js] rendering,,,');
     return (
-      <div className="Demo">
-        <p>Hello from Demo.js</p>
+      <div>
+        <p>{this.props.counter} times</p>
+        <button onClick={this.props.counting}>Submit</button>
+        <p>{this.props.children}</p>
       </div>
     );
   }
