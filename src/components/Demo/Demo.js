@@ -6,7 +6,7 @@ export default class Demo extends Component {
     // Qúa trình khởi tạo
     // Bao gồm set up state và props
     super(props);
-    this.state = { name: 'Hoang', list: [], check: false };
+    this.state = { name: 'Vu', list: [], check: false };
   }
   //Mounting
   componentWillMount() {
@@ -43,10 +43,13 @@ export default class Demo extends Component {
       this.setState({ name: 'Hoang', check: !checkName });
     }
   };
+  //Unmounting
+  componentWillUnmount() {
+    console.log('[Demo.js] componentWillUnmount');
+  }
   render() {
     console.log(this.state);
     console.log('[Demo.js] rendering,,,');
-
     return (
       <div>
         <button onClick={this.toggleNameHandler}>Name Toggle</button>
