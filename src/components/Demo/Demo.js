@@ -6,7 +6,7 @@ export default class Demo extends Component {
     // Qúa trình khởi tạo
     // Bao gồm set up state và props
     super(props);
-    this.state = {};
+    this.state = { name: 'Hoang', list: [], check: false };
   }
   //Mounting
   componentWillMount() {
@@ -17,23 +17,40 @@ export default class Demo extends Component {
     this.getUserInfor();
   }
   getUserInfor = () => {
-    axios
-      .get('http://jsonplaceholder.typicode.com/users')
-      .then((response) => this.setState({ ...response }));
-    console.log(this.state);
+    axios.get('http://jsonplaceholder.typicode.com/users').then((response) => {
+      this.setState({ list: response });
+    });
   };
+  //Updating
+  componentWillReceiveProps(nextProps, nextState) {
+    console.log('[Demo.js] componentWillReceiveProps');
+  }
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.list === nextState.list;
+    console.log('[Demo.js] shouldComponentUpdate: ' + nextState.name);
+    return true;
   }
-  componentWillUpdates(nextProps, nextState) {
-    console.log('[Demo.js] ComponentWillUpdate');
+  componentWillUpdate(nextProps, nextState) {
+    console.log('[Demo.js] componentWillUpdate: ' + nextState.name);
   }
+  componentDidUpdate(prevProps, prevState) {
+    console.log('[Demo.js] componentDidUpdate: ' + prevState.name);
+  }
+  toggleNameHandler = () => {
+    let checkName = this.state.check;
+    if (!this.state.check) {
+      this.setState({ name: 'Viet', check: !checkName });
+    } else {
+      this.setState({ name: 'Hoang', check: !checkName });
+    }
+  };
   render() {
+    console.log(this.state);
     console.log('[Demo.js] rendering,,,');
+
     return (
       <div>
-        <p>{this.props.counter} times</p>
-        <button onClick={this.props.counting}>Submit</button>
+        <button onClick={this.toggleNameHandler}>Name Toggle</button>
+        <p>{this.state.name}</p>
         <p>{this.props.children}</p>
       </div>
     );
