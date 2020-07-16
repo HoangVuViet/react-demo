@@ -4,15 +4,10 @@ import './index.css';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('app')
-);
-// setTimeout(() => {
-//   ReactDOM.unmountComponentAtNode(document.getElementById('app'));
-// }, 10000);
+ReactDOM.render(<App />, document.getElementById('app'));
+setTimeout(() => {
+  ReactDOM.unmountComponentAtNode(document.getElementById('app'));
+}, 10000);
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
