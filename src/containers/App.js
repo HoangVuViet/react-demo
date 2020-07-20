@@ -16,7 +16,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hello from App.js</h1>
-        <button onClick={this.onClick}>Counting</button>
+        <div className="Button" onClick={this.onClick}>
+          Counting
+        </div>
+        <hr></hr>
         <Demo counting={this.onClick} counter={this.state.count}>
           Hello from Demo.js
         </Demo>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './Demo.css';
 export default class Demo extends Component {
   // Calling the constructor of
   // Parent Class React.Component
@@ -51,7 +52,10 @@ export default class Demo extends Component {
     console.log('[Demo.js] rendering,,,');
     return (
       <div className="Demo">
-        <button onClick={this.toggleNameHandler}>Name Toggle</button>
+        <p>{this.props.counter}</p>
+        <div className="Button" onClick={this.toggleNameHandler}>
+          Name Toggle
+        </div>
         <p>{this.state.name}</p>
         <p>{this.props.children}</p>
       </div>
